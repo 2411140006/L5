@@ -1,0 +1,23 @@
+<h1>ユーザー登録</h1>
+
+<%= form_with model: @user, url: users_path do |f| %>
+  <p>
+    <%= f.label :uid, "ユーザーID" %>
+    <%= f.text_field :uid %>
+  </p>
+
+  <p>
+    <%= f.label :password, "パスワード" %>
+    <%= f.password_field :password %>
+  </p>
+
+  <p>
+    <%= f.label :password_confirmation, "パスワード（確認）" %>
+    <%= f.password_field :password_confirmation %>
+  </p>
+
+  <%= f.submit "登録" %>
+<% end %>
+
+<p><%= link_to "ログイン", login_path %></p>
+<p><%= link_to "トップへ戻る", root_path %></p>
