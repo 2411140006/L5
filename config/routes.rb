@@ -1,9 +1,10 @@
-
 Rails.application.routes.draw do
   root "top#main"
 
   get "signup", to: "users#new"
-  resources :users, only: [:create]
+  resources :users, only: [:create] do
+    resource :profile, only: [:show, :edit, :update], controller: "profiles"
+  end
 
   get "login", to: "sessions#new"
   post "login", to: "sessions#create"

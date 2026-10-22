@@ -1,0 +1,8 @@
+<h1>マイプロフィール</h1>
+
+<p>ユーザーID：<%= @user.uid %></p>
+<p>年齢：<%= @user.age.presence || "未設定" %></p>
+<p>自己紹介：<%= @user.bio.presence || "未設定" %></p>
+
+<%= link_to "プロフィールを編集", edit_user_profile_path(@user) %>
+<%= link_to "トップへ戻る", root_path %>

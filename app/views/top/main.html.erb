@@ -2,6 +2,7 @@
 
 <% if session[:user_id] %>
   <p>ログイン中</p>
+  <%= link_to "マイプロフィール", user_profile_path(session[:user_id]) %>
 
   <%= form_with model: Tweet.new do |f| %>
     <%= f.text_field :message, placeholder: "つぶやきを入力" %>
