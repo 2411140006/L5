@@ -20,13 +20,13 @@ class ProfilesController < ApplicationController
   private
 
   def require_login
-    unless session[:user_id]
+    unless current_user
       redirect_to login_path, alert: "ログインしてください"
     end
   end
 
   def set_user
-    @user = User.find(session[:user_id])
+    @user = current_user
   end
 
   def profile_params

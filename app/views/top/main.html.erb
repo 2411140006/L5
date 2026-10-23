@@ -1,8 +1,8 @@
 <h1>つぶやきアプリ</h1>
 
-<% if session[:user_id] %>
+<% if current_user %>
   <p>ログイン中</p>
-  <%= link_to "マイプロフィール", user_profile_path(session[:user_id]) %>
+  <%= link_to "マイプロフィール", user_profile_path(current_user) %>
 
   <%= form_with model: Tweet.new do |f| %>
     <%= f.text_field :message, placeholder: "つぶやきを入力" %>
@@ -25,8 +25,8 @@
     <p><%= tweet.message %></p>
     <p>いいね：<%= tweet.likes.count %></p>
 
-    <% if session[:user_id] %>
-      <% if tweet.likes.exists?(user_id: session[:user_id]) %>
+    <% if current_user %>
+      <% if tweet.liked?(current_user) %>
         <%= button_to "いいね解除", tweet_like_path(tweet), method: :delete %>
       <% else %>
         <%= button_to "いいね", tweet_like_path(tweet), method: :post %>

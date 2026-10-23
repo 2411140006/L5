@@ -11,6 +11,11 @@
     <%= f.password_field :password %>
   </p>
 
+  <p>
+    <%= f.label :password_confirmation, "パスワード（確認）" %>
+    <%= f.password_field :password_confirmation %>
+  </p>
+
   <%= f.submit "ログイン" %>
 <% end %>
 

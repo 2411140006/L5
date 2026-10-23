@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(uid: params[:uid])
 
-    if user&.authenticate(params[:password])
+    if params[:password] == params[:password_confirmation] && user&.authenticate(params[:password])
       session[:user_id] = user.id
       redirect_to root_path, notice: "ログインしました"
     else
